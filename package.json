@@ -1,16 +1,24 @@
 {
   "name": "moglaf",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^1.1.0",
-    "svelte": "^3.52.0",
-    "vite": "^3.2.3"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaptainQwertz/moglaf.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CaptainQwertz/moglaf/issues"
+  },
+  "homepage": "https://github.com/CaptainQwertz/moglaf#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "less": "^4.1.3"
   }
 }

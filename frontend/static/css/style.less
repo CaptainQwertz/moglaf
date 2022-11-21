@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  background-color: #222;
+}
+
+h1 {
+  font-family: sans-serif;
+}
+
+#nav {
+  display: none;
+}
+
+#centered-container {
+  margin: 5% 30%;
+}
+
+#advent-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-gap: 5px;
+}
+
+.advent-door {
+  font-family: sans-serif;
+  color: #eee;
+  font-size: 40px;
+  padding: 30px 5px;
+
+  background-color: #3c3c3c;
+  transition: background-color .2s ease;
+
+  text-align: center;
+  vertical-align: center;
+
+  cursor: pointer;
+}
+
+.advent-door:hover {
+  background-color: #333;
+}
+
+.advent-door.available {
+  color: #111;
+  background-color: #aaa;
+}
+
+.advent-door.available:hover {
+  background-color: #c0c0c0;
+}
