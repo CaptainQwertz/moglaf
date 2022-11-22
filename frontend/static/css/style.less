@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: #222;
+  font-family: sans-serif;
 }
 
 h1 {
@@ -8,7 +9,24 @@ h1 {
 }
 
 #nav {
-  display: none;
+  min-height: 30px;
+  max-height: 30px;
+  margin: 10px 10px 0;
+}
+
+#nav a {
+  font-size: 20px;
+  line-height: 30px;
+  padding: 5px 10px 4px;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #eee;
+  vertical-align: baseline;
+  transition: background-color .1s ease;
+}
+
+#nav a:hover {
+  background-color: black;
 }
 
 #centered-container {
@@ -48,4 +66,17 @@ h1 {
 
 .advent-door.available:hover {
   background-color: #c0c0c0;
+}
+
+#centered-container #day-door {
+  text-align: center;
+  vertical-align: center;
+}
+
+h1#day-door-heading {
+  color: #eee;
+}
+
+#day-door #day-door-image {
+  width: 800px;
 }
