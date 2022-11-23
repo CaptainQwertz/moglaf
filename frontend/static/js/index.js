@@ -25,7 +25,8 @@ const makeDoorsAvailable = () => {
 const handleDoorClick = (door, doorNumber) => {
     console.debug("Door with number " + doorNumber + " clicked!")
     if (door.classList.contains("available")) { // additionally check for date
-        console.log("Door " + doorNumber + " is available.")
+        // console.log("Door " + doorNumber + " is available.")
+        window.open("door.html", "_self")
     } else {
         alert("Dieses Türchen kannst du noch nicht öffnen!")
     }
