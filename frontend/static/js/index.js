@@ -1,43 +1,40 @@
-const router = async () => {
-    const routes = [
-        { path: "/", view: () => console.log("Viewing Dashboard") },
-        { path: "/posts", view: () => console.log("Viewing Posts") },
-        { path: "/settings", view: () => console.log("Viewing Settings") }
-    ];
-
-    // Test each route for potential match
-    const potentialMatches = routes.map(route => {
-        return {
-            route: route,
-            isMatch: location.pathname === route.path
-        };
-    });
-
-    console.log(potentialMatches);
-};
-
-document.addEventListener("DOMContentLoaded", () => router());
-
-const makeDoorsAvailable = () => {
-    // check date and make all doors up until that date available
-}
-
 const handleDoorClick = (door, doorNumber) => {
     console.debug("Door with number " + doorNumber + " clicked!")
-    if (door.classList.contains("available")) { // additionally check for date
+    if (isDateReached(doorNumber)) { // additionally check for date
         // console.log("Door " + doorNumber + " is available.")
         sessionStorage.setItem("dayClicked", doorNumber)
-        window.open("door.html", "_self")
+        window.open("/door", "_self")
     } else {
-        alert("Dieses Türchen kannst du noch nicht öffnen!")
+        alert("Dieses Türchen kannst du noch nicht öffnen! Komm am " + doorNumber + ".12. wieder!")
     }
     // check date again and check if door available
     // if true, open the specific door in this tab
     // if false, alert that door is not to be opened yet!
 }
 
+const isDateReached = (doorNumber) => {
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1
+
+    console.debug("The current Date: " + day + "." + month)
+
+    if (month === 11) {
+        return false
+    } else if (month === 12) {
+        // only need to check for day here
+        if (day < doorNumber) {
+            return false;
+        }
+    }
+    return true
+}
+
 const doors = document.getElementsByClassName("advent-door");
 
 for (let i = 0; i < doors.length; i++) {
     doors[i].addEventListener("click", () => handleDoorClick(doors[i], i+1))
+    if (isDateReached(i + 1)) {
+        doors[i].classList.add("available")
+    }
 }

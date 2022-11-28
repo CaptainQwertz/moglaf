@@ -1,40 +1,42 @@
-const {promises: Fs} = require('fs')
+// const {promises: Fs} = require('fs')
 
 const doorNumber = sessionStorage.getItem("dayClicked");
-console.log(doorNumber)
 
-const setUp = async () => {
+const setUp = () => {
     document.title = "Moglaf | Door " + doorNumber;
     document.getElementById("day-door-heading").innerHTML = "Tag " + doorNumber;
 
-    // Test for file availability
     const dcc = document.getElementById("day-content-container")
-
-    // Testing if image or mp3
-    if (await isFile("media/days/tag" + doorNumber + ".jpg")) {
-        const content = document.createElement("img");
-        content.id = "day-door-image";
-        content.alt = "Bild von Mogli";
-        content.src = "media/days/tag" + doorNumber + ".jpg";
-        dcc.replaceChildren(content)
-    } else if (await isFile("media/days/tag" + doorNumber + ".mp3")) {
-        const content = document.createElement("audio");
-        content.id = "day-door-audio";
-        content.controls = true
-        content.src = "media/days/tag" + doorNumber + ".mp3";
-        content.innerHTML = "Audio nicht verfügbar."
-        dcc.replaceChildren(content)
+    if (isDateReached()) {
+        const img = document.createElement("img");
+        img.id = "day-door-image";
+        img.alt = "Bild von Mogli";
+        img.src = "static/media/days/tag" + doorNumber + ".jpg";
+        dcc.replaceChildren(img);
     } else {
-        const el = document.createElement("div")
-        el.innerHTML = "Ein Fehler ist aufgetreten";
-        dcc.replaceChildren(el)
+        const warning = document.createElement("div")
+        warning.id = "not-yet-warning"
+        warning.innerHTML = "Dieses Türchen ist noch verschlossen. Komm am " + doorNumber + ".12. wieder, um dieses Mogli-Foto zu sehen!"
+        dcc.replaceChildren(warning)
     }
 }
 
-async function isFile(path) {
-    const stats = await Fs.stat(path);
+const isDateReached = (doorNumber) => {
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1
 
-    return stats.isFile();
+    console.debug("The current Date: " + day + "." + month)
+
+    if (month === 11) {
+        return false
+    } else if (month === 12) {
+        // only need to check for day here
+        if (day < doorNumber) {
+            return false;
+        }
+    }
+    return true
 }
 
 async function checkImage(url) {
@@ -43,5 +45,6 @@ async function checkImage(url) {
 
     return buff.type.endsWith('.jpg')
 }
+
 
 setUp()
