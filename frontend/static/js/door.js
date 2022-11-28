@@ -1,8 +1,13 @@
-// const {promises: Fs} = require('fs')
-
-const doorNumber = sessionStorage.getItem("dayClicked");
+const setDoorNumber = () => {
+    if (sessionStorage.getItem("dayClicked") === null) {
+        return Math.min(new Date().getDate(), 24);
+    }
+    return sessionStorage.getItem("dayClicked");
+}
 
 const setUp = () => {
+    const doorNumber = setDoorNumber();
+
     document.title = "Moglaf | Door " + doorNumber;
     document.getElementById("day-door-heading").innerHTML = "Tag " + doorNumber;
 
@@ -38,13 +43,5 @@ const isDateReached = (doorNumber) => {
     }
     return true
 }
-
-async function checkImage(url) {
-    const res = await fetch(url);
-    const buff = await res.blob();
-
-    return buff.type.endsWith('.jpg')
-}
-
 
 setUp()

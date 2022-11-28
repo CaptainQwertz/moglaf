@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  background-color: #043310;
+  font-family: sans-serif;
+}
+h1 {
+  font-family: sans-serif;
+}
+#nav {
+  min-height: 30px;
+  max-height: 30px;
+  margin: 10px 10px 0;
+}
+a#back-to-cal {
+  font-size: 20px;
+  line-height: 30px;
+  padding: 5px 10px 4px;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #eee;
+  vertical-align: baseline;
+  transition: background-color 0.1s ease;
+}
+a#back-to-cal:hover {
+  background-color: black;
+}
+#centered-container {
+  margin: 5% 5%;
+}
+@media only screen and (min-width: 600px) {
+  #centered-container {
+    margin: 5% 30%;
+  }
+}
+#advent-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-gap: 5px;
+}
+.advent-door {
+  font-family: sans-serif;
+  color: #111;
+  font-size: 40px;
+  padding: 30px 5px;
+  background-color: rgba(141, 45, 45, 0.6);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  text-align: center;
+  vertical-align: center;
+  cursor: pointer;
+}
+.advent-door:hover {
+  background-color: rgba(178, 47, 47, 0.6);
+}
+.advent-door.available {
+  color: #eee;
+  background-color: rgba(194, 0, 0, 0.6);
+  box-shadow: inset 0 0 10px #d2d200;
+}
+.advent-door.available:hover {
+  background-color: rgba(227, 0, 0, 0.6);
+  box-shadow: inset 0 0 15px #ffff3b;
+}
+#centered-container #day-door {
+  text-align: center;
+  vertical-align: center;
+}
+h1#day-door-heading {
+  color: #eee;
+  background-color: rgba(194, 0, 0, 0.6);
+  box-shadow: inset 0 0 10px #d2d200;
+  border-radius: 15px;
+}
+#day-door #day-door-image {
+  max-width: 100%;
+  alignment: center;
+}
+div#not-yet-warning {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #eee;
+  font-size: 30px;
+  margin: 10px 0;
+}
+/*# sourceMappingURL=style.css.map */
